@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import headerView from "../components/common/header/Header.vue"
+import headerView from "../../components/common/header/Header.vue"
 
 export default {
   components: {
@@ -14,5 +14,3 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
