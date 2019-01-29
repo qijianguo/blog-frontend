@@ -1,10 +1,10 @@
 <template>
-  <div class="header_bg" :style="{backgroundImage: 'url(' + image_path + ')'}">
+  <div class="header_bg" v-model="image_path" :style="{backgroundImage: 'url(' + image_path + ')'}">
     <ul class="header_navigation">
-      <li><a href="/tag" @click="toPage('tag')">Tags</a></li>
-      <li><a href="/archive" @click="toPage('archive')">Archives</a></li>
-      <li><a href="/about" @click="toPage('about')">About</a></li>
-      <li><a href="/" @click="toPage('home')">Home</a></li>
+      <li><a @click="toPage('tag')">Tags</a></li>
+      <li><a @click="toPage('archive')">Archives</a></li>
+      <li><a @click="toPage('about')">About</a></li>
+      <li><a @click="toPage('')">Home</a></li>
     </ul>
     <div class="header_author">
       <h1>Angus
@@ -19,13 +19,22 @@
     data () {
       return {
         // TODO: 动态绑定图片:根据点击的tag切换不同的背景图
-        image_path: '/static/common/header/home_header.jpg'
+        image_path: '/static/common/header/home_header.jpg',
       }
     },
     methods: {
-      toPage(path) {
-        alert(path);
-        this.$router.push("/" + path);
+      toPage (path) {
+        this.$router.push('/' + path)
+        if (path === 'archive') {
+          this.$set(this, 'image_path', '/static/common/header/archive_header.jpg')
+        } else if (path === 'about') {
+          this.$set(this, 'image_path', '/static/common/header/about_header.jpg')
+        } else if (path === 'tag') {
+          this.$set(this, 'image_path', '/static/common/header/tag_header.jpg')
+        } else {
+          this.$set(this, 'image_path', '/static/common/header/home_header.jpg')
+        }
+        alert(this.image_path)
       }
     }
   }
@@ -67,12 +76,14 @@
     font-size: 18px;
     margin-top: 20px;
   }
+
   .header_navigation li {
     margin-top: 10%;
-    list-style:none;
+    list-style: none;
     float: right;
     display: block;
   }
+
   .header_navigation li a {
     color: white;
     padding: 20px;
@@ -89,6 +100,6 @@
   }
 
   .header_navigation li a:hover {
-    color: rgba(255,255,255,.8);
+    color: rgba(255, 255, 255, .8);
   }
 </style>

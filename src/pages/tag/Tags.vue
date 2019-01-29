@@ -1,12 +1,16 @@
 <template>
-    <div class="Tags">
-      <h1>Tags</h1>
-    </div>
+  <div>
+    <header-view></header-view>
+  </div>
 </template>
 
 <script>
-    export default {
-        props: {
-        },
-    };
+  import headerView from "../../components/common/header/Header.vue"
+
+  export default {
+    components: {
+      headerView
+    }
+  }
 </script>
+
