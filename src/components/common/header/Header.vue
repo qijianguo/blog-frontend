@@ -1,14 +1,14 @@
 <template>
   <div class="header_bg" v-model="image_path" :style="{backgroundImage: 'url(' + image_path + ')'}">
     <ul class="header_navigation">
-      <li><a @click="toPage('tag')">Tags</a></li>
+      <li><a @click="toPage('tags')">Tags</a></li>
       <li><a @click="toPage('archive')">Archives</a></li>
       <li><a @click="toPage('about')">About</a></li>
       <li><a @click="toPage('')">Home</a></li>
     </ul>
     <div class="header_author">
-      <h1>Angus
-        <div>个人博客</div>
+      <h1>测试
+        <div>二级标题</div>
       </h1>
     </div>
   </div>
@@ -19,21 +19,25 @@
     data () {
       return {
         // TODO: 动态绑定图片:根据点击的tag切换不同的背景图
-        image_path: '/static/common/header/home_header.jpg',
+        image_path: '/static/common/header/home.jpg',
       }
     },
     methods: {
       toPage (path) {
-        if (path === 'archive') {
-          this.$set(this, 'image_path', '/static/common/header/archive_header.jpg')
-        } else if (path === 'about') {
-          this.$set(this, 'image_path', '/static/common/header/about_header.jpg')
-        } else if (path === 'tag') {
-          this.$set(this, 'image_path', '/static/common/header/tag_header.jpg')
-        } else {
-          this.$set(this, 'image_path', '/static/common/header/home_header.jpg')
-        }
         this.$router.push('/' + path)
+      }
+    },
+    mounted () {
+      let path = this.$route.path
+      console.log(path)
+      if (path === '/archive') {
+        this.$set(this, 'image_path', '/static/common/header/archive.jpg')
+      } else if (path === '/about') {
+        this.$set(this, 'image_path', '/static/common/header/about.jpg')
+      } else if (path === '/tags') {
+        this.$set(this, 'image_path', '/static/common/header/tags.jpg')
+      } else if (path === '') {
+        this.$set(this, 'image_path', '/static/common/header/home.jpg')
       }
     }
   }
@@ -57,23 +61,23 @@
     -webkit-background-size: cover;
     -o-background-size: cover;
     background-position: center 0;
-    line-height: 2;
   }
 
   .header_author h1 {
     position: absolute;
-    top: 45%;
+    top: 40%;
     width: 100%;
     color: white;
     font-size: 80px;
-    margin-top: 0;
-    line-height: 1.1;
     font-weight: 700;
+    margin-top: 4%;
   }
 
   h1 div {
     font-size: 18px;
-    margin-top: 20px;
+    margin-top: 0.5%;
+    line-height: 1.1;
+    font-weight: 300;
   }
 
   .header_navigation li {

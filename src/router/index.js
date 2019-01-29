@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home/Home'
-import About from '@/pages/about/About'
 import Archives from '@/pages/archive/Archives'
-import Tags from '@/pages/tag/tags'
+import Tags from '@/pages/tags/Tags'
+import About from '@/pages/about/About'
 
 Vue.use(Router)
 
@@ -14,17 +14,17 @@ export default new Router({
       name: 'Home',
       component: Home
     },{
-      path: '/about',
-      name: 'About',
-      component: About
-    },{
       path: '/archive',
       name: 'Archives',
       component: Archives
     },{
-      path: '/tag',
+      path: '/tags',
       name: 'Tags',
       component: Tags
+    },{
+      path: '/about',
+      name: 'About',
+      component: About
     }
   ]
 })
