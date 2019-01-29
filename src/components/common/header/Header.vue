@@ -24,7 +24,6 @@
     },
     methods: {
       toPage (path) {
-        this.$router.push('/' + path)
         if (path === 'archive') {
           this.$set(this, 'image_path', '/static/common/header/archive_header.jpg')
         } else if (path === 'about') {
@@ -34,7 +33,7 @@
         } else {
           this.$set(this, 'image_path', '/static/common/header/home_header.jpg')
         }
-        alert(this.image_path)
+        this.$router.push('/' + path)
       }
     }
   }
